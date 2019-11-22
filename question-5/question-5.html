@@ -1,0 +1,56 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../file-drop-zone/file-drop-zone.html">
+
+<dom-module id="question-5">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      file-drop-zone {
+        width: 200px;
+        height: 200px;
+        background-color: #fafafa;
+      }
+    </style>
+    <file-drop-zone accept="image/*" files="{{files}}" on-change="_fileChanged">
+      <div slot="drop-zone">
+        <h3>Drop your image here</h3>
+      </div>
+    </file-drop-zone>
+
+    <img src="[[file]]" alt="">
+  </template>
+
+  <script>
+    /**
+     * `question-5`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class Question5 extends Polymer.Element {
+      static get is() { return 'question-5'; }
+      static get properties() {
+        return {
+          files: {
+            type: Array,
+            value: []
+          },
+          file: {
+            type: File
+          }
+        };
+      }
+
+      _fileChanged(event){
+        this.file = this.files[0];
+      }
+    }
+
+    window.customElements.define(Question5.is, Question5);
+  </script>
+</dom-module>

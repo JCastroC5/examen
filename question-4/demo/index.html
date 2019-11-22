@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>question-4 demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../polymer/lib/elements/dom-bind.html">
+    <link rel="import" href="../question-4.html">
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic question-4 demo</h3>
+      <demo-snippet>
+        <template>
+          <dom-bind id="demo">
+            <template>
+              <question-4 greeting="[[greeting]]" on-name-changed="__nameChanged"></question-4>
+            </template>
+          </dom-bind>
+        </template>
+        <script>
+          const demo = document.querySelector('#demo');
+
+          demo.greeting = 'Good morning';
+          demo.__nameChanged = event => {
+            alert(event.detail);
+          };
+        </script>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

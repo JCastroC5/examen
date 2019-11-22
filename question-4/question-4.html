@@ -1,0 +1,52 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../iron-input/iron-input.html">
+
+<dom-module id="question-4">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <iron-input bind-value="{{name}}">
+      <input value="{{name::input}}" >
+    </iron-input>
+    <h2>[[greeting]] [[name]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `question-4`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class Question4 extends Polymer.Element {
+      static get is() { return 'question-4'; }
+      static get properties() {
+        return {
+          name: {
+            type: String,
+            value: '',
+            observer: "_nameChanged"
+          },
+          greeting: {
+            type: String,
+            value: 'Hello',
+            notify: true
+          },
+        };
+      }
+
+      _nameChanged() {
+        this.dispatchEvent(new CustomEvent('name-changed', {
+          detail: this.greeting + ' ' + this.name
+        }));
+      }
+    }
+
+    window.customElements.define(Question4.is, Question4);
+  </script>
+</dom-module>
